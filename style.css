@@ -1,0 +1,234 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+input,
+button {
+  font-family: "Open Sans", sans-serif;
+}
+
+input,
+button {
+  font-size: 16px;
+}
+
+.head_bar {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  background-color: cornflowerblue;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 40px;
+  padding-right: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+main {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+  margin-top: 110px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-right: 100px;
+}
+
+.input_section .input-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  width: 30%;
+  background-color: cornflowerblue;
+  padding: 16px;
+  margin-top: 20px;
+  height: 390px;
+  position: fixed;
+  left: 50px;
+}
+
+.input_section .input-container > h2 {
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.input_section .input-container > form > .input {
+  margin: 8px 0;
+}
+
+.input_section .input-container > form > button {
+  background-color: #0c9488ff;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  cursor: pointer;
+}
+.input_section .input-container > form > button:hover {
+  background-color: #207f7bff;
+}
+
+.input_section .input-container > form > button > span {
+  font-weight: bold;
+}
+
+.input_section .input-container > form > .input > input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.input_section .input-container > form > .input > label {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+.input_section .input-container > form > .input_inline {
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+}
+
+.input_section .input-container > form > .input_inline > label {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.search_section > form {
+  padding: 16px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr 0.5fr;
+  grid-gap: 10px;
+  width: 500px;
+}
+
+.search_section > form > label {
+  display: flex;
+  align-items: center;
+}
+
+.search_section > form > input {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.search_section > form > button {
+  background-color: #0c9488ff;
+  color: #fff;
+  font-weight: bold;
+  border: 2;
+  border-radius: 5px;
+  cursor: pointer;
+  border-color: #fff;
+}
+.search_section > form > button:hover {
+  background-color: #207f7bff;
+}
+
+.book_shelf {
+  margin: 16px 0 0 0;
+  border: 1px solid black;
+  padding: 16px;
+  border-radius: 10px;
+  width: 600px;
+}
+
+.book_shelf > h2 {
+  color: cornflowerblue;
+}
+
+.book_shelf > .book_list {
+  padding: 16px;
+}
+
+.book_shelf > .book_list > .book_item {
+  padding: 8px 16px 16px 16px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.book_shelf > .book_list > .book_item > h3,
+p {
+  margin: 8px 0;
+}
+
+.book_shelf > .book_list > .book_item > .action > button {
+  border: 0;
+  padding: 5px;
+  margin: 0 5px 0 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.book_shelf > .book_list > .book_item > .action > .green {
+  background-color: darkgreen;
+  color: white;
+}
+
+.book_shelf > .book_list > .book_item > .action > .red {
+  background-color: darkred;
+  color: white;
+}
+
+.book_shelf > .book_list > .book_item > .action > .orange {
+  background-color: rgb(255, 119, 8);
+  color: white;
+}
+
+.confirm-remove {
+  display: none;
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.484);
+}
+
+.remove-content {
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  width: 300px;
+  height: 150px;
+  text-align: center;
+}
+
+.remove-content .button-confirm {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+.remove-content .button-confirm button {
+  width: 90px;
+  height: 35px;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.remove-content .button-confirm #jadi-remove {
+  background-color: darkgreen;
+}
+.remove-content .button-confirm #batal-remove {
+  background-color: darkred;
+}
