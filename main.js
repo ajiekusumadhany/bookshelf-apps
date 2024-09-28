@@ -1,17 +1,18 @@
 const SAVED_EVENT = "saved-book";
 const STORAGE_KEY = "BOOKSHELF_APPS";
 
-function isStorageExist() /* boolean */ {
-  if (typeof Storage === undefined) {
+function isStorageExist() {
+  if (typeof Storage === "undefined") {
     alert("Browser kamu tidak mendukung local storage");
     return false;
   }
   return true;
 }
+
 const daftarBook = [];
 const RENDER_EVENT = "render-book";
 document.addEventListener("DOMContentLoaded", function () {
-  const submitForm = document.getElementById("inputBook");
+  const submitForm = document.getElementById("bookForm");
   submitForm.addEventListener("submit", function (event) {
     event.preventDefault();
     addBuku();
@@ -21,12 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 function addBuku() {
-  const titleBook = document.getElementById("inputBookTitle").value;
-  const authorBook = document.getElementById("inputBookAuthor").value;
-  const yearBook = document.getElementById("inputBookYear").value;
-  const isCompletedBook = document.getElementById(
-    "inputBookIsComplete"
-  ).checked;
+  const titleBook = document.getElementById("bookFormTitle").value;
+  const authorBook = document.getElementById("bookFormAuthor").value;
+  const yearBook = document.getElementById("bookFormYear").value;
+  const isCompletedBook = document.getElementById("bookFormIsComplete").checked;
   const generatedID = generateId();
   const bookObject = generateBookObject(
     generatedID,
@@ -236,7 +235,9 @@ function searchBooks(query) {
   );
   const completedBookList = document.getElementById("completeBookshelfList");
   for (const bookItem of daftarBook) {
-    const bookElement = document.getElementById(`book-${bookItem.id}`);
+    const bookElement = document.querySelector(
+      `[data-bookid='${bookItem.id}']`
+    );
     if (bookItem.titleBook.toLowerCase().includes(query.toLowerCase())) {
       bookElement.style.display = "block";
     } else {
@@ -250,7 +251,9 @@ function showAllBooks() {
   );
   const completedBookList = document.getElementById("completeBookshelfList");
   for (const bookItem of daftarBook) {
-    const bookElement = document.getElementById(`book-${bookItem.id}`);
+    const bookElement = document.querySelector(
+      `[data-bookid='${bookItem.id}']`
+    );
     bookElement.style.display = "block";
   }
 }

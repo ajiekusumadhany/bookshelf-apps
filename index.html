@@ -18,35 +18,37 @@
   <header class="head_bar">
     <h1 class="head_bar__title">Bookshelf Apps</h1>
     <section class="search_section">
-      <form id="searchBook">
-        <label for="searchBookTitle"></label>
-        <input id="searchBookTitle" type="text">
-        <button id="searchSubmit" type="submit">Cari</button>
+      <form id="searchBook" data-testid="searchBookForm">
+        <label for="searchBookTitle">Judul</label>
+        <input id="searchBookTitle" type="text" data-testid="searchBookFormTitleInput" />
+        <button id="searchSubmit" type="submit" data-testid="searchBookFormSubmitButton">Search</button>
       </form>
     </section>
   </header>
   <main>
     <section class="input_section">
       <div class="input-container">
-        <h2>Masukkan Buku Baru</h2>
-        <form id="inputBook">
+        <h2>Tambah Buku Baru</h2>
+        <form id="bookForm" data-testid="bookForm">
           <div class="input">
-            <label for="inputBookTitle">Judul</label>
-            <input id="inputBookTitle" type="text" required>
+            <label for="bookFormTitle">Judul</label>
+            <input id="bookFormTitle" type="text" required data-testid="bookFormTitleInput" />
           </div>
           <div class="input">
-            <label for="inputBookAuthor">Penulis</label>
-            <input id="inputBookAuthor" type="text" required>
+            <label for="bookFormAuthor">Penulis</label>
+            <input id="bookFormAuthor" type="text" required data-testid="bookFormAuthorInput" />
           </div>
           <div class="input">
-            <label for="inputBookYear">Tahun</label>
-            <input id="inputBookYear" type="number" required>
+            <label for="bookFormYear">Tahun</label>
+            <input id="bookFormYear" type="number" required data-testid="bookFormYearInput" />
           </div>
           <div class="input_inline">
-            <label for="inputBookIsComplete">Selesai dibaca</label>
-            <input id="inputBookIsComplete" type="checkbox">
+            <label for="bookFormIsComplete">Selesai dibaca</label>
+            <input id="bookFormIsComplete" type="checkbox" data-testid="bookFormIsCompleteCheckbox" />
           </div>
-          <button id="bookSubmit" type="submit">Masukkan Buku ke rak <span>Belum selesai dibaca</span></button>
+          <button id="bookFormSubmit" type="submit" data-testid="bookFormSubmitButton">
+            Masukkan Buku ke rak <span>Belum selesai dibaca</span>
+          </button>
         </form>
       </div>
     </section>
@@ -56,14 +58,14 @@
       <section class="book_shelf">
         <h2>Belum selesai dibaca</h2>
 
-        <div id="incompleteBookshelfList" class="book_list">
+        <div id="incompleteBookshelfList" data-testid="incompleteBookList" class="book_list">
         </div>
       </section>
 
       <section class="book_shelf">
         <h2>Selesai dibaca</h2>
 
-        <div id="completeBookshelfList" class="book_list">
+        <div id="completeBookshelfList" data-testid="completeBookList" class="book_list">
         </div>
       </section>
     </div>
