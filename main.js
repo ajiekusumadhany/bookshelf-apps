@@ -71,75 +71,102 @@ document.addEventListener(RENDER_EVENT, function () {
 function makeBuku(bookObject) {
   const textTitle = document.createElement("h3");
   textTitle.innerText = bookObject.titleBook;
+  textTitle.setAttribute("data-testid", "bookItemTitle");
+
   const textAuthor = document.createElement("p");
   textAuthor.innerText = "Penulis: " + bookObject.authorBook;
+  textAuthor.setAttribute("data-testid", "bookItemAuthor");
+
   const textYear = document.createElement("p");
   textYear.innerText = "Tahun: " + bookObject.yearBook;
+  textYear.setAttribute("data-testid", "bookItemYear");
+
   const textContainer = document.createElement("div");
   textContainer.classList.add("inner");
   textContainer.append(textTitle, textAuthor, textYear);
-  const container = document.createElement("article");
+
+  const container = document.createElement("div");
   container.classList.add("book_item");
   container.append(textContainer);
-  container.setAttribute("id", `book-${bookObject.id}`);
+  container.setAttribute("data-bookid", bookObject.id); // Set ID buku
+  container.setAttribute("data-testid", "bookItem"); // Set test id buku
+
+  // Tombol selesai dibaca atau belum selesai
+  const buttonAction = document.createElement("div");
+  buttonAction.classList.add("action");
+
   if (bookObject.isCompleted) {
     const undoButton = document.createElement("button");
     undoButton.classList.add("green");
     undoButton.innerText = "Belum Selesai dibaca";
+    undoButton.setAttribute("data-testid", "bookItemIsCompleteButton");
+
     undoButton.addEventListener("click", function () {
       undoBook(bookObject.id);
     });
+
     const trashButton = document.createElement("button");
     trashButton.classList.add("red");
     trashButton.innerText = "Hapus buku";
+    trashButton.setAttribute("data-testid", "bookItemDeleteButton");
+
     trashButton.addEventListener("click", function () {
       const confirmRemove = document.getElementById("confirm-remove");
       const jadiRemove = document.getElementById("jadi-remove");
       const batalRemove = document.getElementById("batal-remove");
+
       confirmRemove.style.display = "block";
+
       jadiRemove.addEventListener("click", () => {
         removeBook(bookObject.id);
         confirmRemove.style.display = "none";
       });
+
       batalRemove.addEventListener("click", () => {
         confirmRemove.style.display = "none";
       });
     });
-    const buttonAction = document.createElement("div");
-    buttonAction.classList.add("action");
+
     buttonAction.append(undoButton, trashButton);
-    container.append(buttonAction);
   } else {
     const checkButton = document.createElement("button");
     checkButton.classList.add("green");
     checkButton.innerText = "Selesai dibaca";
+    checkButton.setAttribute("data-testid", "bookItemIsCompleteButton");
 
     checkButton.addEventListener("click", function () {
       addTaskToCompleted(bookObject.id);
     });
+
     const trashButton = document.createElement("button");
     trashButton.classList.add("red");
     trashButton.innerText = "Hapus buku";
+    trashButton.setAttribute("data-testid", "bookItemDeleteButton");
+
     trashButton.addEventListener("click", function () {
       const confirmRemove = document.getElementById("confirm-remove");
       const jadiRemove = document.getElementById("jadi-remove");
       const batalRemove = document.getElementById("batal-remove");
+
       confirmRemove.style.display = "block";
+
       jadiRemove.addEventListener("click", () => {
         removeBook(bookObject.id);
         confirmRemove.style.display = "none";
       });
+
       batalRemove.addEventListener("click", () => {
         confirmRemove.style.display = "none";
       });
     });
-    const buttonAction = document.createElement("div");
-    buttonAction.classList.add("action");
+
     buttonAction.append(checkButton, trashButton);
-    container.append(buttonAction);
   }
+
+  container.append(buttonAction);
   return container;
 }
+
 function addTaskToCompleted(bookId) {
   const bookTarget = findBook(bookId);
   if (bookTarget == null) return;
